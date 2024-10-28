@@ -1,0 +1,24 @@
+<mat-form-field appearance="fill">
+  <input matInput type="text" placeholder="Enter city" #cityCtrl
+    (keydown.enter)="search(cityCtrl.value)">
+  <mat-icon matSuffix (click)="search(cityCtrl.value)">search</mat-icon>
+</mat-form-field>
+
+@if (weather) {
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ weather.location.name }}</mat-card-title>
+    <mat-card-subtitle>{{ weather.current.condition.text }}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="card-image">
+    <img mat-card-image [src]="weather.current.condition.icon"
+      alt="{{ weather.current.condition.icon }}">
+  </div>
+  <mat-card-content>
+    <h1>{{weather.current.temp_c}} °C</h1>
+    <p>Pressure: {{weather.current.pressure_in}} hPa</p>
+    <p>Humidity: {{weather.current.humidity}} %</p>
+    <p>Wind: {{weather.current.wind_kph}} km/h</p>
+  </mat-card-content>
+</mat-card>
+}
